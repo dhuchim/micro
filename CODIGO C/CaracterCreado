@@ -33,7 +33,7 @@ int bateria[7]={ //Sintaxis:  int NOMBRE [7]={ codigo binario de la figurita};
   0B11111,
   
 };
-//NOTAS: Originalmente debe ser [8], sin embargo este LCD parece ser de 7x5 entonces el Array se declara con [7]
+//NOTAS: Originalmente debe ser [8], sin embargo este LCD cada cuadrito parece ser de 7x5 entonces el Array se declara con [7]
 // por lo que al crear la figura se debe tomar en cuenta eso y olvidarse de la ultima fila de la cuadricula
 
 void main()
