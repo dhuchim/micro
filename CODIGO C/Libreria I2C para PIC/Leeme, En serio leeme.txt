@@ -1,0 +1,3 @@
+El archivo se coloca en la ruta de:
+C:\Program Files (x86)\PICC\Drivers
+ 
