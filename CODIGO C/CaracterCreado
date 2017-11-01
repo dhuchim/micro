@@ -1,0 +1,72 @@
+#include <lcd.h>// Librerias MAGICAS
+#define LCD_ENABLE_PIN PIN_C2
+#define LCD_RS_PIN PIN_C0
+#define LCD_RW_PIN PIN_C1
+#define LCD_DATA4 PIN_C4
+#define LCD_DATA5 PIN_C5
+#define LCD_DATA6 PIN_C6
+#define LCD_DATA7 PIN_C7
+#use fast_io(b) //Configuracon Rapida de los PINES B
+#use fast_io(c) //Configuracion RAPIDA de PINES C
+#include <lcd.c>//Librerias MAGICAS
+
+
+//Aqui agregamos el codigo de la figurita creada, la misma mecanica que en Arduino
+int fantasmita[7]={ //Sintaxis:  int NOMBRE [7]={ codigo binario de la figurita};
+  
+  0B01110,
+  0B11111,
+  0B10101,
+  0B11111,
+  0B11111,
+  0B11111,
+  0B10101,
+  
+};
+int bateria[7]={ //Sintaxis:  int NOMBRE [7]={ codigo binario de la figurita};
+  0B01110,
+  0B01010,
+  0B10001,
+  0B10001,
+  0B10001,
+  0B10001,
+  0B11111,
+  
+};
+//NOTAS: Originalmente debe ser [8], sin embargo este LCD parece ser de 7x5 entonces el Array se declara con [7]
+// por lo que al crear la figura se debe tomar en cuenta eso y olvidarse de la ultima fila de la cuadricula
+
+void main()
+{
+   set_tris_b(0x03); //Configuro el Puerto B como 2 entradas y puras salidas
+   set_tris_c(0x00); //Configuro el Puerto C todo como salidas
+   
+   setup_adc_ports(AN0);   // Configuraciones Iniciales del ADC
+   setup_adc(ADC_CLOCK_DIV_2|ADC_TAD_MUL_0);//Configuraciones Iniciales del ADC
+   lcd_init();
+  
+   //Aqui le asignamos un 'Valor' en este caso es 0 y llamamos al array creado anteriormente
+   lcd_set_cgram_char(0,fantasmita); //Sintaxis: lcd_set_cgram_char(numero que le asignaremos, nombre del Array);
+   //si tienes dudas respecto a como se escribe una sintaxis del LCD simplemente te colocas seguidito de la palabra LCD y ejecutas la combinacion Ctrl+Espacio y 
+   // se te desplegara la lista de comandos disponibles.
+   lcd_set_cgram_char(1,bateria);
+   while(TRUE)
+   {
+   lcd_gotoxy(1,1);
+   lcd_putc("LETICIA");
+     
+   if (input(PIN_B0)==1){
+   for(int i=1;i<18;++i){
+   lcd_putc("\f");// esta belleza hace la magia de limpiar el LCD :3
+   lcd_gotoxy(i,1);
+   lcd_putc(0);//Aqui simplemente imprimimos el caracter que creamos, para ello lo llamamos segun el numero asignado (0)
+   lcd_gotoxy(i+1,1);//Lo ubico en una posicion despues del primer caracter
+   lcd_putc(1); 
+   delay_ms(200);
+   
+      }//Fin del FOR
+   }//FIN del IF
+ 
+   }//FIN del WHILE INFINITO
+
+}//FIN DEL MAIN
