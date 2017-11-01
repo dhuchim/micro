@@ -24,8 +24,7 @@ void main()
    {
    lcd_gotoxy(1,1);
    lcd_putc("LETICIA");
-   delay_ms(200);
-   
+     
  if (input(PIN_B0)==1){
  for(int i=1;i<18;++i){
    lcd_putc("\f");// esta belleza hace la magia de limpiar el LCD :3
