@@ -47,9 +47,12 @@ void main()
   
    //Aqui le asignamos un 'Valor' en este caso es 0 y llamamos al array creado anteriormente
    lcd_set_cgram_char(0,fantasmita); //Sintaxis: lcd_set_cgram_char(numero que le asignaremos, nombre del Array);
-   //si tienes dudas respecto a como se escribe una sintaxis del LCD simplemente te colocas seguidito de la palabra LCD y ejecutas la combinacion Ctrl+Espacio y 
-   // se te desplegara la lista de comandos disponibles.
+   //si tienes dudas respecto a como se escribe una sintaxis del LCD simplemente te colocas seguidito de la palabra LCD  
+   // y ejecutas la combinacion Ctrl+Espacio, enseguida se te desplegara la lista de comandos disponibles.
+   
    lcd_set_cgram_char(1,bateria);
+   
+   
    while(TRUE)
    {
    lcd_gotoxy(1,1);
