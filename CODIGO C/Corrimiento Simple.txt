@@ -1,4 +1,3 @@
-#include <lcd.c>//Librerias MAGICAS
 #include <lcd.h>// Librerias MAGICAS
 #define LCD_ENABLE_PIN PIN_C2
 #define LCD_RS_PIN PIN_C0
@@ -8,7 +7,7 @@
 #define LCD_DATA6 PIN_C6
 #define LCD_DATA7 PIN_C7
 #use fast_io(c) //Configuracion RAPIDA de PINES C
-
+#include <lcd.c>//Librerias MAGICAS
 
 void main()
 {
