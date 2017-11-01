@@ -1,0 +1,41 @@
+
+#include <lcd.h>// Librerias MAGICAS
+#define LCD_ENABLE_PIN PIN_C2
+#define LCD_RS_PIN PIN_C0
+#define LCD_RW_PIN PIN_C1
+#define LCD_DATA4 PIN_C4
+#define LCD_DATA5 PIN_C5
+#define LCD_DATA6 PIN_C6
+#define LCD_DATA7 PIN_C7
+#use fast_io(b) //Configuracon Rapida de los PINES B
+#use fast_io(c) //Configuracion RAPIDA de PINES C
+#include <lcd.c>//Librerias MAGICAS
+
+void main()
+{
+   set_tris_b(0x03); //Configuro el Puerto B como 2 entradas y puras salidas
+   set_tris_c(0x00); //Configuro el Puerto C todo como salidas
+   
+   setup_adc_ports(AN0);   // Configuraciones Iniciales del ADC
+   setup_adc(ADC_CLOCK_DIV_2|ADC_TAD_MUL_0);//Configuraciones Iniciales del ADC
+   lcd_init();
+
+   while(TRUE)
+   {
+   lcd_gotoxy(1,1);
+   lcd_putc("LETICIA");
+   delay_ms(200);
+   
+ if (input(PIN_B0)==1){
+ for(int i=1;i<18;++i){
+   lcd_putc("\f");// esta belleza hace la magia de limpiar el LCD :3
+   lcd_gotoxy(i,1);
+   lcd_putc("DAVID");
+   delay_ms(200);
+   
+ }//Fin del FOR
+}//FIN del IF
+ 
+   }//FIN del WHILE INFINITO
+
+}//FIN DEL MAIN
