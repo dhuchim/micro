@@ -1,0 +1,33 @@
+//Pegar Después de la libreria BASE del proyecto
+/*********************************** MODULO LCD I2C **********************************************/
+#define PCF8574A        // Comentar para módulos que usan PCF8574                   
+#define A2_A1_A0 0B111  // Pines del modulo (A2 A1 A0) do PCF8574A/PCF8574.
+#include <lcd_i2c_pcf8574.c> //Libreria Maravilla
+/*************************************************************************************************/
+
+void main()
+{  
+   inicializa_lcd_i2c();
+   printf(escrever_lcd_i2c,"\fDAVID");
+   delay_ms(1000);
+   limpar_lcd_i2c();
+   int array[8]={ //Caracter de Flechita
+   0b00100,
+   0b00100,
+   0b00100,
+   0b00100,
+   0b10101,
+   0b01110,
+   0b00100,
+   0b00000 };
+   escrever_cgram_lcd_i2c(0,array);
+  
+   while(TRUE)
+   {
+   lcd_i2c_irpara_xy(1,1);
+   printf(escrever_lcd_i2c,0);
+   escrever_lcd_i2c(0);
+   delay_ms(300);
+   }
+
+}
