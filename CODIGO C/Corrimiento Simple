@@ -1,4 +1,4 @@
-
+//Pegar Después de la libreria BASE del proyecto
 #define LCD_ENABLE_PIN PIN_C2
 #define LCD_RS_PIN PIN_C0
 #define LCD_RW_PIN PIN_C1
