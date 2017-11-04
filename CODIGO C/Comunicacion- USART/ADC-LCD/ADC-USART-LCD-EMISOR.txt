@@ -13,7 +13,7 @@
 void main()
 {
    setup_adc_ports(AN0); // Configuracion inicial del Proyecto
-   setup_adc(ADC_CLOCK_DIV_2|ADC_TAD_MUL_2); // Condiguracion Inicial del Proyecto
+   setup_adc(ADC_CLOCK_DIV_2|ADC_TAD_MUL_2); // Configuracion Inicial del Proyecto
    
    
    int8 temp; //Variable de almacenamiento 
