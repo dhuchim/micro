@@ -1,0 +1,32 @@
+// ------------ Configuraciones del Proyecto-- NO INLCUIR---//
+#include <ADC-USART-LCD-EMISOR.h>
+#define LCD_ENABLE_PIN PIN_B0
+#define LCD_RS_PIN PIN_B1
+#define LCD_RW_PIN PIN_B2
+#define LCD_DATA4 PIN_B4
+#define LCD_DATA5 PIN_B5
+#define LCD_DATA6 PIN_B6
+#define LCD_DATA7 PIN_B7
+#include <lcd.c>
+// ------ Inicio Codigo-----------//
+#include <math.h> // Habilita las operaciones matematicas
+void main()
+{
+   setup_adc_ports(AN0); // Configuracion inicial del Proyecto
+   setup_adc(ADC_CLOCK_DIV_2|ADC_TAD_MUL_2); // Condiguracion Inicial del Proyecto
+   
+   
+   int8 temp; //Variable de almacenamiento 
+   lcd_init();// Directiva de inicio del LCD
+
+   while(TRUE)
+   {
+     
+   temp=500*read_adc()/1023; // Operaciones de de conversion de ADC;
+   putc(temp); // Mandamos el Valor de Temp, por el USART
+   printf(lcd_putc,"\fTemp.= %d", temp); // Impresion de LCD
+   delay_ms(100);
+      
+   }
+
+}
