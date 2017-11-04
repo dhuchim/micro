@@ -1,0 +1,32 @@
+//----Configuracion del Proyecto----- No incluir-----///
+#include <USART-LCD.h>
+#define LCD_ENABLE_PIN PIN_B0
+#define LCD_RS_PIN PIN_B1
+#define LCD_RW_PIN PIN_B2
+#define LCD_DATA4 PIN_B4
+#define LCD_DATA5 PIN_B5
+#define LCD_DATA6 PIN_B6
+#define LCD_DATA7 PIN_B7
+#include <lcd.c>
+//-----------------INICIO CODIGO--------------------//
+//--- En este código el elemento Clave es la funcion 
+// putc(); esta función emite lo que se ponga dentro de su parametro "()", posteriormente
+// en el codigo del receptor se leera esta función con su contraria, get();
+
+void main()
+{
+   int valor; // Variable de Almacenamiento Global
+   lcd_init(); // Directiva que inicia el LCD
+
+   while(TRUE)
+   {
+   for(valor=0;valor<=10;valor++){
+   putc(valor); // Funcion que emite el valor puesto dentro de su parametro "()"
+   printf(lcd_putc,"\fEnviando=%d",valor); // Se imprime en LCD
+   // La \f limpia el LCD cada que se imprime algo (Una especie de RESET) Pag. 66 de Compilador C CCS 
+   // La %d cumple cierta funcion de concatenamiento Pag. 66 de Compilador C CCS 
+   delay_ms(500);
+   
+   }
+  }
+}

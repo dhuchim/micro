@@ -1,0 +1,33 @@
+//----Configuracion del Proyecto----- No incluir-----///
+#include <USART-LCD-RECEPTOR.h>
+#define LCD_ENABLE_PIN PIN_B0
+#define LCD_RS_PIN PIN_B1
+#define LCD_RW_PIN PIN_B2
+#define LCD_DATA4 PIN_B4
+#define LCD_DATA5 PIN_B5
+#define LCD_DATA6 PIN_B6
+#define LCD_DATA7 PIN_B7
+#include <lcd.c>
+//-----------------INICIO CODIGO--------------------//
+//--- En este código el elemento Clave es la funcion 
+// getc(); esta función obtiene lo que se emite por la función putc(); 
+
+
+void main()
+{
+   int valor; // Variable de almacenamiento
+   lcd_init(); //Directiva que inicia el LCD
+
+  
+   while(TRUE){
+    
+    for(int i=getc();i<10;){  // Aqui igualo i con get(), para usarlo como indice de iteraciones
+    valor=getc(); // Almaceno el contenido de getc() en Valor
+    lcd_putc("\f"); // Limpio la pantalla en cada iteracion para evitar acumulacion de caracteres
+    
+     lcd_gotoxy(1,1); // Ubico el curso en la posicion 1,1 
+     printf(lcd_putc,"Recibiendo=%d ",valor); // Imprimo en LCD el %d cumple cierta funcion de concatenamiento Pagina 66 de Compilador C CCS :)
+     delay_ms(500);}
+     
+     }
+ }
