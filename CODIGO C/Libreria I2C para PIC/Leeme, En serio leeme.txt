@@ -1,3 +1,9 @@
 El archivo se coloca en la ruta de:
 C:\Program Files (x86)\PICC\Drivers
- 
+
+NOTA: Es importante añadir los siguientes comandos dentro del codigo
+//------------------------------
+#define PCF8574        // Este modulo es importante, puesto que es compatible con los modulos comerciales.                
+#define A2_A1_A0 0B111  // Pines del modulo (A2 A1 A0) do PCF8574A/PCF8574.
+#include <lcd_i2c_8574.c> // Con esta instruccion se incluye la libreria
+//------------------------------ 
