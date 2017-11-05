@@ -1,0 +1,29 @@
+#include <USAR-LCD-I2C-EMISOR.h>// -- Libreria del Proyecto NO INCLUIR
+
+// ------ Inicio Codigo-----------//
+#define PCF8574        // Este modulo es importante, puesto que es compatible con los modulos comerciales.                
+#define A2_A1_A0 0B111  // Pines del modulo (A2 A1 A0) do PCF8574A/PCF8574.
+#include <lcd_i2c_8574.c>
+#include <math.h> // Habilita las operaciones matematicas
+void main()
+{
+   setup_adc_ports(AN0); // Configuracion inicial del Proyecto
+   setup_adc(ADC_CLOCK_DIV_2|ADC_TAD_MUL_2); // Configuracion Inicial del Proyecto
+   
+   
+   int8 temp; //Variable de almacenamiento 
+   int8 lect;
+   inicializa_lcd_i2c();// Iniciamos la comunicación con el LCD por medio de I2C
+  
+
+   while(TRUE)
+   {
+   lect=read_adc();
+   temp=500*read_adc()/1023; // Operaciones de de conversion de ADC;
+   putc(temp); // Mandamos el Valor de Temp, por el USART
+   printf(escrever_lcd_i2c,"\fTemp.= %d",temp);
+     delay_ms(100);
+      
+   }
+
+}
