@@ -12,7 +12,7 @@ Rp = 0.5; As = 70; %indicamos las especificaciones
 %para convertir las especificaciones relativas (dB) Rp y As en el
 %especificaciones absolutas delta1 y delta2.
 [delta1,delta2] = db2delta(Rp,As);
-%se usa la instrucción para estimar el orden del filtro que satisfaga 
+%se usa la instrucciÃ³n para estimar el orden del filtro que satisfaga 
 %las especificaciones
 [N,f,m,weights] = firpmord([ws,wp]/pi,[0,1],[delta2,delta1]); 
 %aplicamos el algoritmo de Parks-McClellan
@@ -29,10 +29,10 @@ title('Respuesta de amplitud'); axis([0 0.5 -0.1 1.2]);grid on
 subplot(2,1,2);plot(w/pi,db);xlabel('Frecuencia en unidades de Pi');ylabel('Decibeles');
 title('Magnitud de respuesta en dB');axis([0 0.5 -100 20]);grid on
 figure('Name','Comparacion de Sonidos','NumberTitle','off');
-subplot(2,1,1);plot(x);title('Señal Original');
-subplot(2,1,2);plot(y);title('Señal con filtro aplicado');
+subplot(2,1,1);plot(x);title('SeÃ±al Original');
+subplot(2,1,2);plot(y);title('SeÃ±al con filtro aplicado');
 %sound(y,fs); %para escuchar el audio resultante
-%audiowrite(Filename,y,fs)%guardamos el archivo resultante con el nombre de Filename
+audiowrite(Filename,y,fs)%guardamos el archivo resultante con el nombre de Filename
 
 
 
